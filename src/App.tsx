@@ -1,19 +1,32 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-export interface AppReduxProps {
+type Props = {
   fetching: Boolean;
   data: Array<any>;
   error: string;
   onFetchData(): any;
+};
+
+type State = {};
+
+class App extends React.Component<Props, State> {
+  render() {
+    return (
+      <div>
+        <button onClick={this.props.onFetchData}>Click me</button>
+        {console.log(this.props.data)}
+      </div>
+    );
+  }
 }
 
-const App = (props: AppReduxProps) => (
-  <div>
-    <button onClick={props.onFetchData}>Click me</button>
-    {console.log(props.data)}
-  </div>
-);
+// const App = (props: Props) => (
+//   <div>
+//     <button onClick={props.onFetchData}>Click me</button>
+//     {console.log(props.data)}
+//   </div>
+// );
 
 const mapStateToProps = state => {
   return {
