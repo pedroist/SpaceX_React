@@ -8,7 +8,7 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App lang="TypeScript" />
+    <App />
   </Provider>,
   document.getElementById("root")
 );
