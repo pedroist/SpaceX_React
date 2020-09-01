@@ -22,5 +22,5 @@ function* workerSaga() {
 
 // function that returns api response
 function fetchData() {
-  return LaunchesAPI.getLaunches();
+  return LaunchesAPI.getLaunchesHttpRequest();
 }
