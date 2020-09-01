@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 export interface AppReduxProps {
   fetching: Boolean;
-  data: any;
+  data: Array<any>;
   error: string;
   onFetchData(): any;
 }
@@ -11,7 +11,7 @@ export interface AppReduxProps {
 const App = (props: AppReduxProps) => (
   <div>
     <button onClick={props.onFetchData}>Click me</button>
-    <div>{props.data}</div>
+    {console.log(props.data)}
   </div>
 );
 
