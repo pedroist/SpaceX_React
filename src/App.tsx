@@ -11,13 +11,12 @@ type Props = {
 type State = {};
 
 class App extends React.Component<Props, State> {
+  componentDidMount() {
+    this.props.onFetchData();
+  }
+
   render() {
-    return (
-      <div>
-        <button onClick={this.props.onFetchData}>Click me</button>
-        {console.log(this.props.data)}
-      </div>
-    );
+    return <React.Fragment></React.Fragment>;
   }
 }
 
