@@ -1,5 +1,5 @@
 import { takeLatest, call, put } from "redux-saga/effects";
-import Api from "../api";
+import LaunchesAPI from "../api/launchesAPI";
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export function* watcherSaga() {
@@ -22,5 +22,5 @@ function* workerSaga() {
 
 // function that returns api response
 function fetchData() {
-  return Api.getLaunches();
+  return LaunchesAPI.getLaunches();
 }
