@@ -1,7 +1,7 @@
 import {
-  API_CALL_REQUEST,
-  API_CALL_SUCCESS,
-  API_CALL_FAILURE
+  API_LAUNCHES_REQUEST,
+  API_LAUNCHES_SUCCESS,
+  API_LAUNCHES_FAILURE
 } from "./actions";
 
 /* === REDUCER === */
@@ -14,13 +14,13 @@ const initialState = {
 
 export default function reduxSagaReducer(state = initialState, action) {
   switch (action.type) {
-    case API_CALL_REQUEST:
+    case API_LAUNCHES_REQUEST:
       return { ...state, fetching: true, error: null };
       break;
-    case API_CALL_SUCCESS:
+    case API_LAUNCHES_SUCCESS:
       return { ...state, fetching: false, data: action.data };
       break;
-    case API_CALL_FAILURE:
+    case API_LAUNCHES_FAILURE:
       return { ...state, fetching: false, data: null, error: action.error };
       break;
     default:

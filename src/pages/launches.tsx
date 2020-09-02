@@ -89,7 +89,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchData: () => dispatch({ type: "API_CALL_REQUEST" })
+    onFetchData: () => dispatch({ type: "API_LAUNCHES_REQUEST" })
   };
 };
 
