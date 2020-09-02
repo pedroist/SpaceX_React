@@ -1,11 +1,16 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const devMode = process.env.NODE_ENV !== "production";
+const SRC_DIR = __dirname + "/src";
+const DIST_DIR = __dirname + "/dist";
+
 module.exports = {
   context: __dirname,
-  entry: "./src/index.tsx",
+  entry: [SRC_DIR + "/index.tsx"],
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: DIST_DIR,
     filename: "bundle.js",
     publicPath: "/"
   },
@@ -26,8 +31,21 @@ module.exports = {
         use: "babel-loader"
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        test: /\.(scss|sass|css)$/,
+        exclude: /node_modules/,
+        loaders: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: "[local]___[hash:base64:5]"
+            }
+          },
+          "sass-loader"
+        ]
       },
       {
         test: /\.(png|j?g|svg|gif)?$/,
@@ -41,7 +59,8 @@ module.exports = {
       filename: "index.html"
     }),
     new MiniCssExtractPlugin({
-      filename: "./src/yourfile.css"
+      filename: devMode ? "[name].css" : "[name].[hash].css",
+      chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     })
   ]
 };
