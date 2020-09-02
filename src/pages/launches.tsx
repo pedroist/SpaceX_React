@@ -1,5 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import FilterPanel from "../components/filter-panel/filter-panel";
+import CardList from "../components/card-list/card-list";
 
 type Props = {
   fetching: Boolean;
@@ -18,8 +20,11 @@ class Launches extends React.Component<Props, State> {
   render() {
     return (
       <React.Fragment>
-        <h1>Launches</h1>
-        <p>Component illustrative just to demonstrate routing is working</p>
+        <div>
+          <h1>Launches</h1>
+          <FilterPanel />
+          <CardList />
+        </div>
       </React.Fragment>
     );
   }
