@@ -15,7 +15,7 @@ const CardList: React.FC<Props> = props => {
       {(!launches || launches.length == 0) && <div>Loading...</div>}
       {launches &&
         launches.length > 0 &&
-        launches.map(launch => <Card key={launch.id} />)}
+        launches.map(launch => <Card key={launch.id} launch={launch} />)}
     </div>
   );
 };
