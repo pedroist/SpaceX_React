@@ -31,7 +31,11 @@ module.exports = {
         use: "babel-loader"
       },
       {
-        test: /\.(scss|sass|css)$/,
+        test: /\.(s*)css$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.(css)$/,
         exclude: /node_modules/,
         loaders: [
           MiniCssExtractPlugin.loader,
@@ -43,8 +47,7 @@ module.exports = {
               importLoaders: 1,
               localIdentName: "[local]___[hash:base64:5]"
             }
-          },
-          "sass-loader"
+          }
         ]
       },
       {
