@@ -1,15 +1,16 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import LaunchesAPI from "../api/launchesAPI";
+import LaunchClass from "../models/launchClass";
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
-export function* watcherSaga() {
+export function* launchesSaga() {
   yield takeLatest("API_LAUNCHES_REQUEST", workerSaga);
 }
 
 // worker saga: makes the api call when watcher saga sees the action
 function* workerSaga() {
   try {
-    const response = yield call(fetchData);
+    const response = yield call(fetchLaunches);
     const data = response.data;
 
     // dispatch a success action to the store with the data fetched
@@ -21,6 +22,6 @@ function* workerSaga() {
 }
 
 // function that returns api response
-function fetchData() {
+function fetchLaunches() {
   return LaunchesAPI.getLaunchesHttpRequest();
 }
