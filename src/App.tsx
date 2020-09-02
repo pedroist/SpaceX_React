@@ -7,17 +7,6 @@ import Rockets from "./pages/rockets";
 export default class App extends React.Component {
   render() {
     return (
-      // <div>
-      //   <nav>
-      //     <ul className="menu">
-      //       <li>
-      //         <a href="/">Launches</a>
-      //       </li>
-      //       <li>
-      //         <a href="/rockets">Rockets</a>
-      //       </li>
-      //     </ul>
-      //   </nav>
       <BrowserRouter>
         <Route exact path="/" component={Launches} />
         <Route path="/rockets" component={Rockets} />
