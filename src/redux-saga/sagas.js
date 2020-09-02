@@ -27,6 +27,9 @@ function* workerSaga() {
         launchesArray.push(jsonToLaunchMapper(launchJSON));
       }
     });
+
+    //Dispatch other action to save the new array
+    yield put({ type: "API_LAUNCHES_SAVE_LAUNCH_OBJECTS", launchesArray });
   } catch (error) {
     // dispatch a failure action to the store with the error
     yield put({ type: "API_LAUNCHES_FAILURE", error });
