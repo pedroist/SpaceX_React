@@ -16,7 +16,12 @@ class Launches extends React.Component<Props, State> {
   }
 
   render() {
-    return <React.Fragment></React.Fragment>;
+    return (
+      <React.Fragment>
+        <h1>Launches</h1>
+        <p>Component illustrative just to demonstrate routing is working</p>
+      </React.Fragment>
+    );
   }
 }
 
