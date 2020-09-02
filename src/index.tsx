@@ -10,7 +10,7 @@ const store = configureStore();
 
 ReactDOM.render(
   <div>
-    <nav>
+    <nav className="nav-root">
       <ul className="menu">
         <li>
           <a href="/">Launches</a>
