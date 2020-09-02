@@ -1,4 +1,4 @@
-export default class LaunchClass {
+export default interface ILaunch {
   id: string;
   img?: string;
   name?: string;
@@ -9,6 +9,4 @@ export default class LaunchClass {
   upcoming?: boolean;
   rocketId?: string;
   rocketName?: string; //field obtain through the rocket API with the id
-
-  constructor() {}
 }
