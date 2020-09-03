@@ -1,23 +1,14 @@
 import * as React from "react";
-import { connect } from "react-redux";
 import "./card.scss";
 import ILaunch from "../../models/ILaunch";
-import launches from "../../pages/launches";
 
-type OwnProps = { launch: ILaunch };
-
-type Props = {
-  fetching: Boolean;
-  data: Array<any>;
-  error: string;
-  onFetchData(): any;
-};
+type Props = { launch: ILaunch };
 
 type State = {};
 
-class Card extends React.Component<Props & OwnProps, State> {
+class Card extends React.Component<Props, State> {
   componentDidMount() {
-    this.props.onFetchData();
+    //fetch correspondent rocket
   }
 
   render() {
@@ -46,22 +37,4 @@ class Card extends React.Component<Props & OwnProps, State> {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    fetching: state.reduxSaga.fetching,
-    data: state.reduxSaga.data,
-    error: state.reduxSaga.error,
-    launch: ownProps.launch
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onFetchData: () => dispatch({ type: "API_ROCKETS_REQUEST" })
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Card);
+export default Card;
