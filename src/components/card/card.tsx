@@ -1,16 +1,53 @@
 import * as React from "react";
 import "./card.scss";
 import ILaunch from "../../models/ILaunch";
+import LaunchClass from "../../models/launchClass";
+import RocketsAPI from "../../api/rocketsAPI";
 
 type Props = { launch: ILaunch };
 
-type State = {};
+type State = { launch: ILaunch };
 
 class Card extends React.Component<Props, State> {
+  readonly state: State = {
+    launch: { ...this.props.launch }
+  };
+
   componentDidMount() {
     //fetch correspondent rocket
-  }
+    let launch = new LaunchClass();
+    launch.launchClass({ ...this.state.launch });
 
+    if (this.props && this.props.launch && this.props.launch.rocketId) {
+      RocketsAPI.getRocketsHttpRequest(this.props.launch.rocketId)
+        .then(rocket => {
+          // fill rocket name and missing rocket images by accessing rocketAPI
+          if (rocket && rocket.data) {
+            if (rocket.data.name) {
+              launch.rocketName = rocket.data.name;
+            }
+            if (
+              !launch.img &&
+              rocket.data.flickr_images &&
+              rocket.data.flickr_images.length > 0
+            ) {
+              launch.img = rocket.data.flickr_images[0];
+            }
+          }
+        })
+        .catch(error => {
+          let errorMessage = "";
+          if (error.error instanceof ErrorEvent) {
+            // client-side error
+            errorMessage = `Error: ${error.error.message}`;
+          } else {
+            // server-side error
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+          }
+          console.warn(errorMessage);
+        });
+    }
+  }
   render() {
     const { launch } = this.props;
     return (
