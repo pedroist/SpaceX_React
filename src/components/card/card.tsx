@@ -3,7 +3,7 @@ import "./card.scss";
 import ILaunch from "../../models/ILaunch";
 import LaunchClass from "../../models/launchClass";
 import RocketsAPI from "../../api/rocketsAPI";
-
+import * as _ from "lodash";
 type Props = { launch: ILaunch };
 
 type State = { launch: ILaunch };
@@ -31,7 +31,9 @@ class Card extends React.Component<Props, State> {
               rocket.data.flickr_images &&
               rocket.data.flickr_images.length > 0
             ) {
-              launch.img = rocket.data.flickr_images[0];
+              //since the most of the rockets have the same first image we will get a random one from the list
+              let randIndex = _.random(0, rocket.data.flickr_images.length - 1);
+              launch.img = rocket.data.flickr_images[randIndex];
             }
           }
         })
