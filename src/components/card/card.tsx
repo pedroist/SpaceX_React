@@ -54,6 +54,12 @@ class Card extends React.Component<Props, State> {
   }
   render() {
     const { launch } = this.state;
+    const date = new Date(launch.date);
+    const formattedDate = Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "2-digit"
+    }).format(date);
     return (
       <div className="card">
         <div
@@ -65,7 +71,7 @@ class Card extends React.Component<Props, State> {
         <div className="card-content">
           <div className="card-body">
             <div className="card-title">{launch.name}</div>
-            <div className="card-subtitle">{launch.date}</div>
+            <div className="card-subtitle">{formattedDate}</div>
             <div className="card-description">{launch.details}</div>
           </div>
           <div className="card-footer">
