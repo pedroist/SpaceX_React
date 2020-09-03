@@ -8,7 +8,13 @@ const Card: React.FC<Props> = props => {
   const { launch } = props;
   return (
     <div className="card">
-      <img className="card-img" src={launch.img} alt="card" />
+      <div
+        className="card-img"
+        style={{
+          background: `url(${launch.img}) 0% 50% / contain`
+        }}
+      ></div>
+      {/* <img className="card-img" src={launch.img} alt="card" /> */}
       <div className="card-content">
         <div className="card-body">
           <div className="card-title">{launch.name}</div>
