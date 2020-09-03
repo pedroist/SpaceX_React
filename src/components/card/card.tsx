@@ -35,6 +35,8 @@ class Card extends React.Component<Props, State> {
               let randIndex = _.random(0, rocket.data.flickr_images.length - 1);
               launch.img = rocket.data.flickr_images[randIndex];
             }
+            //Now that we have a complete launch object we can save it on state:
+            this.setState({ launch: launch });
           }
         })
         .catch(error => {
@@ -51,7 +53,7 @@ class Card extends React.Component<Props, State> {
     }
   }
   render() {
-    const { launch } = this.props;
+    const { launch } = this.state;
     return (
       <div className="card">
         <div

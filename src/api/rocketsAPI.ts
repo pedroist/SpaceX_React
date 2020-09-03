@@ -10,7 +10,7 @@ export default class LaunchesAPI {
    */
   static getRocketsHttpRequest(id: string) {
     const url = `${API_BASE_ADDRESS}/rockets/${id}`;
-    console.log("url: ", url);
+
     return axios.get<any>(url);
   }
 }
