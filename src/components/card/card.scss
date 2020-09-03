@@ -9,7 +9,7 @@
   @media only screen and (max-width: 768px) {
     flex-direction: column;
     max-width: 300px;
-    height: 700px;
+    height: 500px;
   }
 
   &-img {
@@ -19,8 +19,12 @@
     width: 32%;
 
     @media only screen and (max-width: 768px) {
-      max-width: 300px;
-      height: 32%;
+      width: 100%;
+      background: url(https://farm9.staticflickr.com/8617/16789019815_f99a165dc5_o.jpg);
+      height: 55%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
   }
 
@@ -30,7 +34,8 @@
     flex-direction: column;
 
     @media only screen and (max-width: 768px) {
-      height: 68%;
+      height: 45%;
+      width: 100%;
     }
   }
 
@@ -41,26 +46,38 @@
     height: 80%;
 
     @media only screen and (max-width: 768px) {
-      margin: 16px 16px 32px;
+      margin: unset;
+      padding: 6px 14px 9px;
     }
   }
 
   &-title {
     font-size: 2rem;
     font-weight: bold;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 1.8rem;
+    }
   }
 
   &-subtitle {
     color: grey;
+
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 7px;
+    }
   }
 
   &-description {
-    // white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
+
+    @media only screen and (max-width: 768px) {
+      -webkit-line-clamp: 6;
+    }
   }
   &-footer {
     display: flex;
