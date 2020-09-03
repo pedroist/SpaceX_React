@@ -59,7 +59,7 @@ class Card extends React.Component<Props, State> {
         <div
           className="card-img"
           style={{
-            background: `url(${launch.img}) 0% 50% / contain`
+            background: `url(${launch.img}) 0% 50% / cover`
           }}
         ></div>
         <div className="card-content">

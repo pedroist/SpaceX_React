@@ -1,7 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import FilterPanel from "../components/filter-panel/filter-panel";
-import CardList from "../components/card-list/card-list";
+import FilterPanel from "../../components/filter-panel/filter-panel";
+import CardList from "../../components/card-list/card-list";
+import "./launches.scss";
 
 type Props = {
   fetching: Boolean;
@@ -20,8 +21,8 @@ class Launches extends React.Component<Props, State> {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <h1>Launches</h1>
+        <div className="launches">
+          <h1 className="launches-title">Launches</h1>
           <FilterPanel />
           <CardList />
         </div>
